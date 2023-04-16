@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, map,tap } from 'rxjs';
 import { ResourceModel } from '../models/resource.model';
 
 @Injectable({ providedIn: 'root' })
@@ -41,11 +41,12 @@ export class ResourcesService {
 
 
   addResources(resource: {id: string, products: number}): void {
-   const resourcesMap = this.allResources.map(res => {
+   this.allResources$.pipe(map(allRes => allRes.map(res => {
     if (res.id === resource.id ){
       return {...res, state: res.state + resource.products} 
     }
     return res
-   })
+   })),
+   tap(data => this._allResourcesSubject.next(data)))
   }
 }
