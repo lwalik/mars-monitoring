@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MartianDetailComponent } from './components/martian-detail/martian-detail.component';
+import { MartianDetailComponentModule } from './components/martian-detail/martian-detail.component-module';
 import { ResourcesListComponent } from './components/resources-list/resources-list.component';
 import { ResourcesListComponentModule } from './components/resources-list/resources-list.component-module';
 import { MartiansListComponent } from './components/martians-list/martians-list.component';
@@ -14,12 +16,14 @@ const routes: Routes = [
   { path: 'resources-list', component: ResourcesListComponent },
   { path: '', component: MartiansListComponent },
   { path: 'job-list', component: JobListComponent },
+  { path: 'martian-detail/:id', component: MartianDetailComponent },
   { path: 'martian-form', component: MartianFormComponent },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
+    MartianDetailComponentModule,
     JobListComponentModule,
     MartiansListComponentModule,
     MartianFormComponentModule,
