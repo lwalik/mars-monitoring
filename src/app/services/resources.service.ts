@@ -47,6 +47,6 @@ export class ResourcesService {
     }
     return res
    })),
-   tap(data => this._allResourcesSubject.next(data)))
+   tap(data => this._allResourcesSubject.next(data))).subscribe()
   }
 }
