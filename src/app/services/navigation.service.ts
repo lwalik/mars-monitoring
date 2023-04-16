@@ -13,7 +13,7 @@ const LINKS: NavLinkModel[] = [
   },
   {
     text: 'Job List',
-    url: 'jobs-list',
+    url: 'job-list',
   },
   {
     text: 'Martian Form',
