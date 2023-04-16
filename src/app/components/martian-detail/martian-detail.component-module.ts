@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MartianDetailComponent } from './martian-detail.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [MatCardModule, MatFormFieldModule, CommonModule, MatListModule],
@@ -11,4 +12,4 @@ import { MartianDetailComponent } from './martian-detail.component';
   providers: [],
   exports: [MartianDetailComponent],
 })
-export class MartianDetailComponentModule { }
+export class MartianDetailComponentModule {}

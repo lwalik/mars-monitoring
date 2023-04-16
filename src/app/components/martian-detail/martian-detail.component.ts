@@ -19,14 +19,14 @@ export class MartianDetailComponent {
     this._activatedRoute.params.pipe(
       switchMap((params: Params) => of(params['id'])),
       map(() => ({
-        id: 'Test',
-        name: 'Test',
-        lastName: 'Test',
-        imageUrl: '//unsplash.it/300/300',
-        skills: ['skill1', 'skill2', 'skill3'],
-        sex: 'male',
-        experienceInSpace: 'experienced',
-        workingState: 'test',
+        id: '1',
+        name: 'Marek',
+        lastName: 'Skwarek',
+        imageUrl: '/assets/martian.jpeg',
+        skills: ['Grows up of potatos'],
+        sex: 'Male',
+        experienceInSpace: '23000 hours',
+        workingState: 'potatoes',
       }))
     );
 

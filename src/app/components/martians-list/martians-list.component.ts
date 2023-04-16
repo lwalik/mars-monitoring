@@ -17,7 +17,6 @@ export class MartiansListComponent {
   readonly maritans$: Observable<
     {
       fullName: string;
-
       imageUrl: string;
       experienceInSpace: string;
       workingState: string;
@@ -48,5 +47,6 @@ export class MartiansListComponent {
     'Name',
     'Experience in space',
     'Working state',
+    'Details',
   ];
 }

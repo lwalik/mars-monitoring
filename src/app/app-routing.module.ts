@@ -7,19 +7,18 @@ import { MartiansListComponentModule } from './components/martians-list/martians
 import { JobListComponent } from './components/job-list/job-list.component';
 import { JobListComponentModule } from './components/job-list/job-list.component-module';
 const routes: Routes = [
-  { path: 'martian-detail/:id', component: MartianDetailComponent },
-
   { path: '', component: MartiansListComponent },
   { path: 'job-list', component: JobListComponent },
+  { path: 'martian-detail/:id', component: MartianDetailComponent },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes), MartianDetailComponentModule,
+    RouterModule.forRoot(routes),
+    MartianDetailComponentModule,
     JobListComponentModule,
     MartiansListComponentModule,
   ],
-  exports: [RouterModule],,
+  exports: [RouterModule],
 })
-export class AppRoutingModule {}
 export class AppRoutingModule {}
