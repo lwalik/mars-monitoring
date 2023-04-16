@@ -10,9 +10,12 @@ import { MartiansListComponentModule } from './components/martians-list/martians
 import { MartianFormComponentModule } from './components/martian-form/martian-form.component-module';
 import { MartianServiceModule } from './services/martian.service-module';
 
-const routes: Routes = [{ path: 'resources-list', component: ResourcesListComponent },   { path: '', component: MartiansListComponent },
-{ path: 'job-list', component: JobListComponent },
-{ path: 'martian-form', component: MartianFormComponent },];
+const routes: Routes = [
+  { path: 'resources-list', component: ResourcesListComponent },
+  { path: '', component: MartiansListComponent },
+  { path: 'job-list', component: JobListComponent },
+  { path: 'martian-form', component: MartianFormComponent },
+];
 
 @NgModule({
   imports: [
@@ -21,7 +24,7 @@ const routes: Routes = [{ path: 'resources-list', component: ResourcesListCompon
     MartiansListComponentModule,
     MartianFormComponentModule,
     MartianServiceModule,
-    ResourcesListComponentModule
+    ResourcesListComponentModule,
   ],
   exports: [RouterModule],
 })
