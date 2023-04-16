@@ -3,7 +3,8 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+import { MartianModel } from 'src/app/models/martian.model';
 
 @Component({
   selector: 'app-martians-list',
@@ -13,15 +14,39 @@ import { Observable, of } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MartiansListComponent {
-  readonly maritans: Observable<
+  readonly maritans$: Observable<
     {
-      name: string;
-      lastName: string;
+      fullName: string;
+
       imageUrl: string;
-      skills: string[];
-      sex: string;
       experienceInSpace: string;
       workingState: string;
     }[]
-  > = of([]);
+  > = of([
+    {
+      id: '1',
+      name: 'Marek',
+      lastName: 'Skwarek',
+      imageUrl: 'assets/photo',
+      skills: ['Grows up of potatos'],
+      sex: 'Male',
+      experienceInSpace: '23000 hours',
+      workingState: 'potatoes',
+    },
+  ]).pipe(
+    map((martians) =>
+      martians.map((martian) => ({
+        fullName: ` ${martian.name} ${martian.lastName}`,
+        imageUrl: martian.imageUrl,
+        experienceInSpace: martian.experienceInSpace,
+        workingState: martian.workingState,
+      }))
+    )
+  );
+  public displayedColumns: string[] = [
+    'Image',
+    'Name',
+    'Time in space',
+    'Working state',
+  ];
 }

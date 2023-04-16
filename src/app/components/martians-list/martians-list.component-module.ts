@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MartiansListComponent } from './martians-list.component';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
-  imports: [],
+  imports: [CommonModule, MatCardModule, MatTableModule],
   declarations: [MartiansListComponent],
   providers: [],
-  exports: [MartiansListComponent]
+  exports: [MartiansListComponent],
 })
-export class MartiansListComponentModule {
-}
+export class MartiansListComponentModule {}
