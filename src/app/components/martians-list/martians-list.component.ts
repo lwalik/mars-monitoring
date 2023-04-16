@@ -3,8 +3,11 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
-import { MartianModel } from 'src/app/models/martian.model';
+import { Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { JobModel } from '../../models/job.model';
+import { JobsService } from '../../services/jobs.service';
+import { MartianService } from '../../services/martian.service';
 
 @Component({
   selector: 'app-martians-list',
@@ -17,23 +20,11 @@ export class MartiansListComponent {
   readonly maritans$: Observable<
     {
       fullName: string;
-
       imageUrl: string;
       experienceInSpace: string;
       workingState: string;
     }[]
-  > = of([
-    {
-      id: '1',
-      name: 'Marek',
-      lastName: 'Skwarek',
-      imageUrl: 'assets/martian.jpeg',
-      skills: ['Grows up of potatos'],
-      sex: 'Male',
-      experienceInSpace: '23000 hours',
-      workingState: 'potatoes',
-    },
-  ]).pipe(
+  > = this._martianService.getAll().pipe(
     map((martians) =>
       martians.map((martian) => ({
         fullName: ` ${martian.name} ${martian.lastName}`,
@@ -49,4 +40,28 @@ export class MartiansListComponent {
     'Experience in space',
     'Working state',
   ];
+  readonly jobs$: Observable<JobModel[]> = this._jobsService.getAll();
+  private _currentJobSubject: Subject<{ work: string; id: string }> =
+    new Subject<{ work: string; id: string }>();
+  public currentJob$: Observable<{ work: string; id: string }> =
+    this._currentJobSubject.asObservable();
+
+  constructor(
+    private _jobsService: JobsService,
+    private _martianService: MartianService
+  ) {}
+
+  updateWorkingState(work: string, id: string): void {
+    this._currentJobSubject.next({ work, id });
+  }
+  sendWorkingState(): void {
+    this._currentJobSubject
+      .asObservable()
+      .pipe(
+        tap((data) =>
+          this._martianService.updateWorkingState(data.work, data.id)
+        )
+      )
+      .subscribe();
+  }
 }
