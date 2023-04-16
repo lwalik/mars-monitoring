@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add martian</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onFormSubmitted()">
+            <div class="w-50 d-flex flex-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>lastName</mat-label>
+                    <input matInput formControlName="lastName" placeholder="Last name">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="imageUrl" placeholder="Photo">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Skills</mat-label>
+                    <mat-chip-grid #chipGrid aria-label="Fruit selection">
+                        <mat-chip-row *ngFor="let skill of skills">
+                            {{skill}}
+                            <button matChipRemove [attr.aria-label]="'remove'">
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        </mat-chip-row>
+                    </mat-chip-grid>
+                    <input matInput formControlName="skills" placeholder="New Fruit..."
+                           [matChipInputFor]="chipGrid"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    />
+                </mat-form-field>
+                <mat-label>Sex</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="sex">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field appearance="outline">
+                    <mat-label></mat-label>
+                    <input matInput formControlName="experience" placeholder="Experience" type="number">
+                </mat-form-field>
+
+                <mat-card-actions align="end">
+                    <button mat-button type="submit">ADD</button>
+                </mat-card-actions>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+
