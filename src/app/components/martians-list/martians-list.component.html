@@ -1,36 +1,42 @@
 <mat-card>
-  <mat-card-title>Martians List</mat-card-title>
+  <mat-card-header class="mx-auto"></mat-card-header>
+  <mat-card-title class="text-center">Martians List</mat-card-title>
   <mat-card-content *ngIf="maritans$ | async as martians">
     <table mat-table [dataSource]="martians" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
       <!-- Position Column -->
       <ng-container matColumnDef="Image">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">
-          <img [src]="element.imageUrl" />
+        <th class="text-center" mat-header-cell *matHeaderCellDef>No.</th>
+        <td class="text-center" mat-cell *matCellDef="let element">
+          <img [src]="element.imageUrl" width="35" height="35" />
         </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="Name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+        <th class="text-center" mat-header-cell *matHeaderCellDef>Name</th>
+        <td class="text-center" mat-cell *matCellDef="let element">
+          {{ element.fullName }}
+        </td>
       </ng-container>
 
       <!-- Weight Column -->
-      <ng-container matColumnDef="Time in space">
-        <th mat-header-cell *matHeaderCellDef>Time in space</th>
-        <td mat-cell *matCellDef="let element">
+      <ng-container matColumnDef="Experience in space">
+        <th class="text-center" mat-header-cell *matHeaderCellDef>
+          Experience in space
+        </th>
+        <td class="text-center" mat-cell *matCellDef="let element">
           {{ element.experienceInSpace }}
         </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="Working state">
-        <th mat-header-cell *matHeaderCellDef>Working state</th>
-        <td mat-cell *matCellDef="let element">{{ element.workingState }}</td>
+        <th class="text-center" mat-header-cell *matHeaderCellDef>
+          Working state
+        </th>
+        <td class="text-center" mat-cell *matCellDef="let element">
+          {{ element.workingState }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

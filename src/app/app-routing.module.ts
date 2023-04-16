@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MartiansListComponent } from './components/martians-list/martians-list.component';
 import { MartiansListComponentModule } from './components/martians-list/martians-list.component-module';
 
-const routes: Routes = [
-  { path: 'martians-list', component: MartiansListComponent },
-];
+const routes: Routes = [{ path: '', component: MartiansListComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), MartiansListComponentModule],

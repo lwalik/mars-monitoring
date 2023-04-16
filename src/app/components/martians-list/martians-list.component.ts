@@ -27,7 +27,7 @@ export class MartiansListComponent {
       id: '1',
       name: 'Marek',
       lastName: 'Skwarek',
-      imageUrl: 'assets/photo',
+      imageUrl: 'assets/martian.jpeg',
       skills: ['Grows up of potatos'],
       sex: 'Male',
       experienceInSpace: '23000 hours',
@@ -46,7 +46,7 @@ export class MartiansListComponent {
   public displayedColumns: string[] = [
     'Image',
     'Name',
-    'Time in space',
+    'Experience in space',
     'Working state',
   ];
 }
