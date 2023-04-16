@@ -1,24 +1,26 @@
 <mat-card>
-    <mat-card-title>Resources list</mat-card-title>
+  <mat-card-header nx-auto>
+    <mat-card-title text-center>Resources list</mat-card-title>
+  </mat-card-header>
     <mat-card-content>
         <ng-container *ngIf="resourcesList$ | async as list">
             <table mat-table [dataSource]="list" class="mat-elevation-z8">         <!-- Column 1 -->
               <ng-container matColumnDef="column1">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let resource">{{resource.id}}</td>
+                <th text-center mat-header-cell *matHeaderCellDef> ID </th>
+                <td text-center mat-cell *matCellDef="let resource">{{resource.id}}</td>
               </ng-container>
               <!-- Column 2 -->
               <ng-container matColumnDef="column2">
-                <th mat-header-cell *matHeaderCellDef> Image</th>
-                <td mat-cell *matCellDef="let resource"> <img src="{{resource.imageUrl}}" width="50px"> </td>
+                <th text-center mat-header-cell *matHeaderCellDef> Image</th>
+                <td text-center mat-cell *matCellDef="let resource"> <img src="{{resource.imageUrl}}" width="50px"> </td>
               </ng-container>
               <ng-container matColumnDef="column3">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let resource"> {{resource.name}} </td>
+                <th text-center mat-header-cell *matHeaderCellDef> Name </th>
+                <td text-center mat-cell *matCellDef="let resource"> {{resource.name}} </td>
               </ng-container>
               <ng-container matColumnDef="column4">
-                <th mat-header-cell *matHeaderCellDef> State</th>
-                <td mat-cell *matCellDef="let resource"> {{resource.state}} / {{resource.maxState}} </td>
+                <th text-center mat-header-cell *matHeaderCellDef> State</th>
+                <td text-center mat-cell *matCellDef="let resource"> {{resource.state}} / {{resource.maxState}} </td>
               </ng-container>
               
            
