@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MartiansListComponent } from './martians-list.component';
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatCardModule,
     MatTableModule,
+    MatSelectModule,
     MatButtonModule,
     MatIconModule,
     RouterModule,

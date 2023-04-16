@@ -35,7 +35,23 @@
           Working state
         </th>
         <td class="text-center" mat-cell *matCellDef="let element">
-          {{ element.workingState }}
+          <!-- {{ element.workingState }} -->
+
+          <mat-form-field appearance="fill">
+            <mat-label>Choose your work</mat-label>
+            <mat-select>
+              <mat-option
+                [disabled]="element.workingState !== ''"
+                *ngFor="let job of jobs$ | async"
+                [value]="job.id"
+                (click)="updateWorkingState(job.name, element.id)"
+              >
+                {{ job.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="sendWorkingState()">Accept</button>
+          <button mat-button>Finish</button>
         </td>
       </ng-container>
 
