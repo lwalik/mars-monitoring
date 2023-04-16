@@ -39,6 +39,7 @@ export class MartiansListComponent {
     'Name',
     'Experience in space',
     'Working state',
+    'Details',
   ];
   readonly jobs$: Observable<JobModel[]> = this._jobsService.getAll();
   private _currentJobSubject: Subject<{ work: string; id: string }> =

@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header nx-auto>
+    <mat-card-title text-center>Resources list</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngIf="resourcesList$ | async as list">
+            <table mat-table [dataSource]="list" class="mat-elevation-z8">         <!-- Column 1 -->
+              <ng-container matColumnDef="column1">
+                <th text-center mat-header-cell *matHeaderCellDef> ID </th>
+                <td text-center mat-cell *matCellDef="let resource">{{resource.id}}</td>
+              </ng-container>
+              <!-- Column 2 -->
+              <ng-container matColumnDef="column2">
+                <th text-center mat-header-cell *matHeaderCellDef> Image</th>
+                <td text-center mat-cell *matCellDef="let resource"> <img src="{{resource.imageUrl}}" width="50px"> </td>
+              </ng-container>
+              <ng-container matColumnDef="column3">
+                <th text-center mat-header-cell *matHeaderCellDef> Name </th>
+                <td text-center mat-cell *matCellDef="let resource"> {{resource.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="column4">
+                <th text-center mat-header-cell *matHeaderCellDef> State</th>
+                <td text-center mat-cell *matCellDef="let resource"> {{resource.state}} / {{resource.maxState}} </td>
+              </ng-container>
+              
+           
+                  <tr mat-header-row *matHeaderRowDef="['column1', 'column2', 'column3', 'column4']"></tr>
+              <tr mat-row *matRowDef="let row; columns: ['column1', 'column2', 'column3', 'column4'];"></tr>  
+            </table>
+          </ng-container>
+       
+          
+    </mat-card-content>
+</mat-card>

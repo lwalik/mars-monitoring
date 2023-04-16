@@ -55,6 +55,16 @@
         </td>
       </ng-container>
 
+      <!-- Details Column -->
+      <ng-container matColumnDef="Details">
+        <th class="text-center" mat-header-cell *matHeaderCellDef>Details</th>
+        <td class="text-center" mat-cell *matCellDef="let element">
+          <button mat-mini-fab routerLink="/martian-detail/1'">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
