@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
@@ -23,6 +24,7 @@ export class MartiansListComponent {
       imageUrl: string;
       experienceInSpace: string;
       workingState: string;
+      id: string;
     }[]
   > = this._martianService.getAll().pipe(
     map((martians) =>
@@ -31,6 +33,7 @@ export class MartiansListComponent {
         imageUrl: martian.imageUrl,
         experienceInSpace: martian.experienceInSpace,
         workingState: martian.workingState,
+        id: martian.id,
       }))
     )
   );
@@ -49,20 +52,26 @@ export class MartiansListComponent {
 
   constructor(
     private _jobsService: JobsService,
-    private _martianService: MartianService
+    private _martianService: MartianService,
+    private _cdr: ChangeDetectorRef
   ) {}
 
   updateWorkingState(work: string, id: string): void {
+    console.log('id', id);
     this._currentJobSubject.next({ work, id });
   }
-  sendWorkingState(): void {
-    this._currentJobSubject
-      .asObservable()
-      .pipe(
-        tap((data) =>
-          this._martianService.updateWorkingState(data.work, data.id)
-        )
-      )
-      .subscribe();
+  sendWorkingState(currentJob: { work: string; id: string }): void {
+    console.log(currentJob);
+    this._martianService.updateWorkingState(currentJob).subscribe();
+    this._cdr.markForCheck();
+    // return this._currentJobSubject
+    //   .asObservable()
+    //   .pipe(
+    //     map((data) => {
+    //       console.log(data);
+    // return this._martianService.updateWorkingState(data.work, data.id);
+    //   })
+    // )
+    // .subscribe();
   }
 }
