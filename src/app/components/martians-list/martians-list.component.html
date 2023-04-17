@@ -3,7 +3,6 @@
   <mat-card-title class="text-center">Martians List</mat-card-title>
   <mat-card-content *ngIf="maritans$ | async as martians">
     <table mat-table [dataSource]="martians" class="mat-elevation-z8">
-      <!-- Position Column -->
       <ng-container matColumnDef="Image">
         <th class="text-center" mat-header-cell *matHeaderCellDef>No.</th>
         <td class="text-center" mat-cell *matCellDef="let element">
@@ -11,7 +10,6 @@
         </td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="Name">
         <th class="text-center" mat-header-cell *matHeaderCellDef>Name</th>
         <td class="text-center" mat-cell *matCellDef="let element">
@@ -19,7 +17,6 @@
         </td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="Experience in space">
         <th class="text-center" mat-header-cell *matHeaderCellDef>
           Experience in space
@@ -29,33 +26,37 @@
         </td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="Working state">
         <th class="text-center" mat-header-cell *matHeaderCellDef>
           Working state
         </th>
         <td class="text-center" mat-cell *matCellDef="let element">
-          <!-- {{ element.workingState }} -->
-
           <mat-form-field appearance="fill">
-            <mat-label>Choose your work</mat-label>
-            <mat-select>
+            <mat-label>{{
+              element.workingState ?? "Choose your work"
+            }}</mat-label>
+            <mat-select [disabled]="element.workingState">
               <mat-option
-                [disabled]="element.workingState !== ''"
                 *ngFor="let job of jobs$ | async"
                 [value]="job.id"
                 (click)="updateWorkingState(job.name, element.id)"
+                selected="'Sadzenie warzyw'"
               >
                 {{ job.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-button (click)="sendWorkingState()">Accept</button>
+          <button
+            mat-button
+            *ngIf="currentJob$ | async as currentJob"
+            (click)="sendWorkingState(currentJob)"
+          >
+            Accept
+          </button>
           <button mat-button>Finish</button>
         </td>
       </ng-container>
 
-      <!-- Details Column -->
       <ng-container matColumnDef="Details">
         <th class="text-center" mat-header-cell *matHeaderCellDef>Details</th>
         <td class="text-center" mat-cell *matCellDef="let element">
